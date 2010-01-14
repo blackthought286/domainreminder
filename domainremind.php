@@ -2,7 +2,7 @@
 
 	/*
 	*Plugin Name: Domain Reminder
-	*Plugin URI: 
+	*Plugin URI: http://blackthought.posterous.com/domain-reminder-for-wordpress
 	*Description: Plugin will remind you of the date to renew your domain name
 	*Version: 0.1
 	*Author: Everett Bryant
@@ -32,6 +32,7 @@
 	setDateOfExpiration();
 	
 	function setDateOfExpiration(){
+
 		if(isset($_POST['dr_date']) && isset($_POST['dr_month']) && isset($_POST['dr_year'])){
 		
 			$date = (int) $_POST['dr_date'];
@@ -41,7 +42,8 @@
 			//place data in an array and update the expiration date
 			$expiration_date = array($date, $month, $year);
 			update_option('date_of_expiration', $expiration_date);
-		}	
+		}
+		
 	}
 	
 	/**
@@ -63,17 +65,16 @@
 	**/
 	
 	function menuForm(){
-		
 	?>
 		<div class="wrap">
 			<h2>Domain Reminder</h2>
 			<p>a simple tool to help remind you of when your domain renewel is coming up</p>
 			
 			<h4>Remember to renew your Domain name on: </h4>
-			<?php 
+	<?php 
 				$show_date = get_option('date_of_expiration'); 
 				echo('<i>'.$show_date[1].' '.$show_date[0].' '.$show_date[2].'</i>');
-			?>
+	?>
 		</div>
 		<br />
 		<br />
@@ -211,8 +212,7 @@
 		
 		<input type="submit" name="submit" value="Insert Expiration Date" />
 	</form>
-	<?php
+<?php
 		
-	}
+}
 ?>
-
